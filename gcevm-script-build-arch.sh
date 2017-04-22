@@ -14,14 +14,16 @@
 # limitations under the License.
 
 # Build an Arch Linux image from within a GCE Debian VM.
-
+INSTANCE_ID=16232
 BUILDER_ROOT=/mnt/archongce/source
-INSTANCE_NAME=$(/usr/share/google/get_metadata_value attributes/instance-name)
-ZONE_NAME=$(/usr/share/google/get_metadata_value attributes/instance-zone)
-SCRIPT_PARAMS=$(/usr/share/google/get_metadata_value attributes/script-params)
+INSTANCE_NAME=archbuilder${INSTANCE_ID}
+ZONE_NAME=europe-west1-d
+SCRIPT_PARAMS="$*"
 SCRIPT_PARAMS="--verbose --register ${SCRIPT_PARAMS}"
-GIT_SOURCE_URI=$(/usr/share/google/get_metadata_value attributes/git-source-uri)
+GIT_SOURCE_URI=https://github.com/sub77/compute-archlinux-image-builder.git
 REMOTE_IMAGE=$(echo "i = '${SCRIPT_PARAMS}'.split(); print i[i.index('--upload') + 1]" | python)
+
+
 
 echo "Builder Root: ${BUILDER_ROOT}"
 echo "Instance Name: ${INSTANCE_NAME}"
