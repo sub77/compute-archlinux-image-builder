@@ -20,7 +20,7 @@ INSTANCE_ID=16232
 INSTANCE_NAME=archbuilder${INSTANCE_ID}
 ZONE_NAME=europe-west1-d
 MACHINE_TYPE=n1-standard-2
-GIT_SOURCE_URI=https://github.com/GoogleCloudPlatform/compute-archlinux-image-builder.git
+GIT_SOURCE_URI=https://github.com/sub77/compute-archlinux-image-builder.git
 SCRIPT_PARAMS="$*"
 
 function GcloudNotConfiguredHelp() {

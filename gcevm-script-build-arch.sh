@@ -35,7 +35,8 @@ echo "Setup Builder Environment"
 mkdir -p ${BUILDER_ROOT}
 
 echo "Updating Cloud SDK"
-yes | gcloud components update
+sudo sed -i -e 's/true/false/' /usr/lib/google-cloud-sdk/lib/googlecloudsdk/core/config.json
+yes | sudo gcloud components update
 
 function InstallDependenciesForDebian {
   echo "Installing Dependencies (Debian)"
